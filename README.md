@@ -26,14 +26,17 @@ go install github.com/ichsonx/gcommit
 - 即使`body`、`footer`都没有内容，但最终生成的git message会仍然保留它们的标签与格式内容。目的是为了易读性。
 - 关闭issue和不兼容声明，需要自己主动输入（footer部分会有提示）。因为issue输入在哪个部分相对于某些平台也是生效的，这里不做严格规定。
 
+```
+【0】feat：新功能（feature）
+【1】fix：修补bug
+【2】docs：文档（documentation）
+【3】style：格式（不影响代码运行的变动）
+【4】refactor：重构（即不是新增功能，也不是修改bug的代码变动）
+【5】test：增加测试
+【6】build：（以前称chore）构建系统（涉及脚本、配置或工具）和包依赖项相关的开发更改
+【7】perf：性能提升相关的更改
+【8】vendor：更新依赖项、包的版本
+```
 
->【0】feat：新功能（feature）
-> 【1】fix：修补bug
-> 【2】docs：文档（documentation）
-> 【3】style：格式（不影响代码运行的变动）
-> 【4】refactor：重构（即不是新增功能，也不是修改bug的代码变动）
-> 【5】test：增加测试
-> 【6】build：（以前称chore）构建系统（涉及脚本、配置或工具）和包依赖项相关的开发更改
-> 【7】perf：性能提升相关的更改
-> 【8】vendor：更新依赖项、包的版本
+
 
