@@ -1,7 +1,7 @@
 # gcommit
 一个简单易用的提交git commit message的工具
-- 使用标准的<header>、<body>、<footer>格式提交
-- 即使body、footer为空，也依然会提交body、footer字样的message。目的是完整性和易读性。
+- 使用标准的`header`、`body`、`footer`格式提交
+- 即使`body`、`footer`为空，也依然会提交body、footer字样的message。目的是完整性和易读性。
 - 中文提示
 - 只 commit 在 __stage区__的文件
 - 只生成并提交 commit message 的内容
