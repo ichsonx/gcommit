@@ -15,8 +15,15 @@ import (
 )
 
 func main() {
-	template := "<type>(<scope>): <subject>\n\n<body>\n\n<footer>"
 
+	p := false
+	for _, v := range os.Args {
+		if v == "-p" {
+			p = true
+		}
+	}
+
+	template := "<type>(<scope>): <subject>\n\n<body>\n\n<footer>"
 	template = readType(template)
 	template = readScope(template)
 	template = readSubject(template)
@@ -26,22 +33,17 @@ func main() {
 	cmd := exec.Command("git", "commit", "-m", template)
 	output, _ := cmd.CombinedOutput()
 
-	fmt.Printf("%s\n",output)
+	fmt.Printf("%s\n", output)
+
+	if p {
+		cmd := exec.Command("git", "push")
+		output, _ := cmd.CombinedOutput()
+
+		fmt.Printf("%s\n", output)
+	}
 }
 
 func readType(t string) (msg string) {
-	//fmt.Println("【TYPE-必选】：")
-	//fmt.Println("【0】feat：新功能（feature）")
-	//fmt.Println("【1】fix：修补bug")
-	//fmt.Println("【2】docs：文档（documentation）")
-	//fmt.Println("【3】style：格式（不影响代码运行的变动）")
-	//fmt.Println("【4】refactor：重构（即不是新增功能，也不是修改bug的代码变动）")
-	//fmt.Println("【5】test：增加测试")
-	//fmt.Println("【6】build：（以前称chore）构建系统（涉及脚本、配置或工具）和包依赖项相关的开发更改")
-	//fmt.Println("【7】perf：性能提升相关的更改")
-	//fmt.Println("【8】vendor：更新依赖项、包的版本")
-	//fmt.Print("【填入选择的代码】: ")
-
 	fmt.Println("【TYPE】(Required)：")
 	fmt.Println("【0】feat：new feature")
 	fmt.Println("【1】fix：fix bugs")
@@ -135,29 +137,29 @@ func readBody(t string) string {
 	var lines []string
 
 	scanner := bufio.NewScanner(os.Stdin)
-	for  {
+	for {
 		fmt.Print("-> ")
 		scanner.Scan()
 		line := scanner.Text()
 		lines = append(lines, line)
 
-		if len(lines) == 1{
-			if strings.TrimSpace(lines[0]) == ""{
+		if len(lines) == 1 {
+			if strings.TrimSpace(lines[0]) == "" {
 				break
 			}
 		}
 
-		if strings.TrimSpace(line) == "eof"{
+		if strings.TrimSpace(line) == "eof" {
 			lines = lines[:len(lines)-1]
 			break
 		}
 	}
 
-	for _, v := range lines{
-		input = input + "\n" +v
+	for _, v := range lines {
+		input = input + "\n" + v
 	}
 
-	if strings.TrimSpace(input) == ""{
+	if strings.TrimSpace(input) == "" {
 		return t
 	}
 
@@ -175,29 +177,29 @@ func readFooter(t string) string {
 	var lines []string
 
 	scanner := bufio.NewScanner(os.Stdin)
-	for  {
+	for {
 		fmt.Print("-> ")
 		scanner.Scan()
 		line := scanner.Text()
 		lines = append(lines, line)
 
-		if len(lines) == 1{
-			if strings.TrimSpace(lines[0]) == ""{
+		if len(lines) == 1 {
+			if strings.TrimSpace(lines[0]) == "" {
 				break
 			}
 		}
 
-		if strings.TrimSpace(line) == "eof"{
+		if strings.TrimSpace(line) == "eof" {
 			lines = lines[:len(lines)-1]
 			break
 		}
 	}
 
-	for _, v := range lines{
-		input = input + "\n" +v
+	for _, v := range lines {
+		input = input + "\n" + v
 	}
 
-	if strings.TrimSpace(input) == ""{
+	if strings.TrimSpace(input) == "" {
 		return t
 	}
 
