@@ -1,3 +1,3 @@
-module ichsonx/gcommit
+module github.com/ichsonx/gcommit
 
 go 1.14
