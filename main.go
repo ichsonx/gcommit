@@ -8,19 +8,29 @@ package main
 
 import (
 	"bufio"
+	"flag"
 	"fmt"
 	"os"
 	"os/exec"
 	"strings"
 )
 
+var (
+	h bool
+	p bool
+)
+
 func main() {
 
-	p := false
-	for _, v := range os.Args {
-		if v == "-p" {
-			p = true
-		}
+	flag.BoolVar(&h, "h", false, "this help")
+	flag.BoolVar(&p, "p", false, "push after commiting code")
+
+	flag.Parse()
+
+	if h {
+		flag.Usage = usage
+		flag.Usage()
+		os.Exit(0)
 	}
 
 	template := "<type>(<scope>): <subject>\n\n<body>\n\n<footer>"
@@ -41,6 +51,15 @@ func main() {
 
 		fmt.Printf("%s\n", output)
 	}
+}
+
+func usage()  {
+	fmt.Fprintf(os.Stderr, `gcommit version: v0.2.2
+Usage: gcommit [-hp]
+
+Options:
+`)
+	flag.PrintDefaults()
 }
 
 func readType(t string) (msg string) {
