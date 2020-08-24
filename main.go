@@ -54,7 +54,7 @@ func main() {
 }
 
 func usage()  {
-	fmt.Fprintf(os.Stderr, `gcommit version: v0.2.2
+	fmt.Fprintf(os.Stderr, `gcommit version: v0.2.4
 Usage: gcommit [-hp]
 
 Options:
