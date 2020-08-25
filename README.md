@@ -1,16 +1,19 @@
 # gcommit
-一个简单易用的提交git commit message的工具
+一个轻量级，简单易用的提交git commit message的工具
 - 使用标准的`header`、`body`、`footer`格式提交
 - 即使`body`、`footer`为空，也依然会提交body、footer字样的message。目的是完整性和易读性。
 - 中文提示
 - 只 commit 在 __stage区__的文件
 - 只生成并提交 commit message 的内容
+- 可在commit后打tag
+- 可在commit、tag后push到远程仓库
 
 
 
 ## install
 
 ```shell
+go get -u github.com/ichsonx/gcommit
 go install github.com/ichsonx/gcommit
 ```
 
@@ -36,6 +39,24 @@ go install github.com/ichsonx/gcommit
 【6】build：（以前称chore）构建系统（涉及脚本、配置或工具）和包依赖项相关的开发更改
 【7】perf：性能提升相关的更改
 【8】vendor：更新依赖项、包的版本
+```
+
+### 基本用法
+
+```shell
+gcommit
+```
+
+### 命令行说明
+
+```shell
+gcommit -h
+```
+
+### 提交后自动push
+
+```shell
+gcommit -p
 ```
 
 
