@@ -27,7 +27,7 @@ func main() {
 	flag.BoolVar(&h, "h", false, "this help")
 	flag.BoolVar(&p, "p", false, "push after commiting code")
 	flag.StringVar(&t, "t", "", "tag the version code")
-	flag.StringVar(&tm, "tm", "", "tag annotated, ignore if without -t")
+	flag.StringVar(&tm, "tm", "", "tag annotation, ignore if without flag -t")
 
 	flag.Parse()
 
@@ -70,7 +70,7 @@ func main() {
 
 func usage()  {
 	fmt.Fprintf(os.Stderr, `gcommit version: v0.3.0
-Usage: gcommit [-hp]
+Usage: gcommit [-hp] [-t version_code] [-tm tag_annotation]
 
 Options:
 `)
