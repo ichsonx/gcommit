@@ -41,22 +41,33 @@ go install github.com/ichsonx/gcommit
 【8】vendor：更新依赖项、包的版本
 ```
 
-### 基本用法
+1. 基本用法
 
 ```shell
 gcommit
 ```
 
-### 命令行说明
+2. 命令行说明
 
 ```shell
 gcommit -h
 ```
 
-### 提交后自动push
+3. 提交后自动push
 
 ```shell
 gcommit -p
+```
+
+4. commit同时打tag
+
+```shell
+# 为刚刚提交的commit打tag版本
+gcommit -t v0.1.0
+
+# 在打tag的同时附加tag注解。
+# 单独使用-tm是会被忽略的
+gcommit -t v0.1.1 -tm 这是tag的附注信息
 ```
 
 

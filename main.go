@@ -18,12 +18,16 @@ import (
 var (
 	h bool
 	p bool
+	t string
+	tm string
 )
 
 func main() {
 
 	flag.BoolVar(&h, "h", false, "this help")
 	flag.BoolVar(&p, "p", false, "push after commiting code")
+	flag.StringVar(&t, "t", "", "tag the version code")
+	flag.StringVar(&tm, "tm", "", "tag annotated, ignore if without -t")
 
 	flag.Parse()
 
@@ -42,8 +46,19 @@ func main() {
 
 	cmd := exec.Command("git", "commit", "-m", template)
 	output, _ := cmd.CombinedOutput()
-
 	fmt.Printf("%s\n", output)
+
+	if t != "" {
+		var cmd *exec.Cmd
+		if tm != ""{
+			cmd = exec.Command("git", "tag", "-a", t, "-m", tm)
+		}else {
+			cmd = exec.Command("git", "tag", t)
+		}
+		output, _ := cmd.CombinedOutput()
+
+		fmt.Printf("%s\n", output)
+	}
 
 	if p {
 		cmd := exec.Command("git", "push")
@@ -54,7 +69,7 @@ func main() {
 }
 
 func usage()  {
-	fmt.Fprintf(os.Stderr, `gcommit version: v0.2.4
+	fmt.Fprintf(os.Stderr, `gcommit version: v0.3.0
 Usage: gcommit [-hp]
 
 Options:
