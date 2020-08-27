@@ -14,7 +14,6 @@
 
 ```shell
 go get -u github.com/ichsonx/gcommit
-go install github.com/ichsonx/gcommit
 ```
 
 **将编译后的程序加入到环境变量中，方便命令行使用。**
