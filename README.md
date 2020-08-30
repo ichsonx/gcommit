@@ -14,7 +14,6 @@
 
 ```shell
 go get -u github.com/ichsonx/gcommit
-go install github.com/ichsonx/gcommit
 ```
 
 **将编译后的程序加入到环境变量中，方便命令行使用。**
@@ -59,5 +58,13 @@ gcommit -h
 gcommit -p
 ```
 
+4. 提交并打tag
 
+```shell
+# 提交并打tag
+gcommit -t v0.0.1
+
+# 提交打tag，并给tag添加注解。如果没有标记-t，则-tm标记功能会被忽略
+gcommit -t v0.0.2 -tm 注解内容
+```
 
