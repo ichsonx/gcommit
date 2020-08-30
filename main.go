@@ -69,7 +69,7 @@ func main() {
 }
 
 func usage()  {
-	fmt.Fprintf(os.Stderr, `gcommit version: v0.3.0
+	fmt.Fprintf(os.Stderr, `gcommit version: v0.3.2
 Usage: gcommit [-hp] [-t version] [-tm tag_message]
 
 Options:
